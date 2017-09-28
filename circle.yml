@@ -31,7 +31,7 @@ dependencies:
 # compiles the application and run email-service container to execute automation tests
 compile:
   override:
-    - CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o workdir/service/main . 
+    - cd flights-history-service-test-2/service/ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o workdir/service/main . 
     # - docker build -t "statravel/flights-history-service:$(/bin/bash shared-workspace/docker-image-tag.sh $DOCKER_USER $DOCKER_PASSWORD flights-history-service 1)" .
 
 #run tests
