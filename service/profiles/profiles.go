@@ -51,11 +51,11 @@ func getGoPath(profile string) string {
 
 	if profile == local {
 
-		return "\\src\\github.com\\sta-travel\\flights-history-service\\service\\profiles\\"
+		return "\\src\\github.com\\sbagnallsta\\flights-history-service-test-2\\service\\profiles\\"
 
 	}
 
-	return "/src/github.com/sta-travel/flights-history-service/service/profiles/"
+	return "/src/github.com/sbagnallsta/flights-history-service-test-2/service/profiles/"
 
 }
 

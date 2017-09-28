@@ -3,9 +3,9 @@ package flightController
 import (
 	"net/http"
 	"github.com/gin-gonic/gin"
-	"github.com/sta-travel/flights-history-service/service/repository"
-	"github.com/sta-travel/flights-history-service/service/models/dbConnector"
-	"github.com/sta-travel/flights-history-service/service/models/flight"
+	"github.com/sbagnallsta/flights-history-service-test-2/service/repository"
+	"github.com/sbagnallsta/flights-history-service-test-2/service/models/dbConnector"
+	"github.com/sbagnallsta/flights-history-service-test-2/service/models/flight"
 )
 
 func StoreFlights(dbConnector dbConnector.DBData) gin.HandlerFunc {
