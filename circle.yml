@@ -37,8 +37,8 @@ compile:
 #run tests
 test:
   override:
-    - go run main.go:
-        background: true
+    - go run main.go
+        # background: true
     - sleep 5
     - cd automation && mvn clean test -DargLine="-Dspring.profiles.active=ci" -Dcucumber.options="--tags @sanity"
     - cd automation && mvn clean test -DargLine="-Dspring.profiles.active=ci" -Dcucumber.options="--tags @smoke"
