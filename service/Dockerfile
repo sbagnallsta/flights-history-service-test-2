@@ -1,6 +1,6 @@
 FROM scratch
 
-WORKDIR home/ubuntu/flights-history-service-test-2
+WORKDIR home/ubuntu/flights-history-service-test-2/service
 
 ADD main /
 
