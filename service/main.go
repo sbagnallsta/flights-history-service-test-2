@@ -21,7 +21,7 @@ func main() {
 		profile = "local"
 		fmt.Println(profile)
 	}	
-	viper.SetConfigName(profile)
+	viper.SetConfigName(profile + string(".json"))
 	viper.AddConfigPath("./profiles")
 	err := viper.ReadInConfig()
 	if err != nil {
