@@ -22,7 +22,7 @@ func main() {
 		fmt.Println(profile)
 	}	
 	viper.SetConfigName(profile + string(".json"))
-	viper.AddConfigPath("./profiles")
+	viper.AddConfigPath("./profiles/")
 	err := viper.ReadInConfig()
 	if err != nil {
 		fmt.Println("Error", err)
