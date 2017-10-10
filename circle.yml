@@ -32,7 +32,8 @@ dependencies:
 compile:
   override:
     - cd service CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o workdir/service/main . 
-    - docker build -t "statravel/flights-history-service:$(/bin/bash shared-workspace/docker-image-tag.sh $DOCKER_USER $DOCKER_PASSWORD flights-history-service 1)" .
+    # - cd service docker build -t "statravel/flights-history-service:$(/bin/bash shared-workspace/docker-image-tag.sh $DOCKER_USER $DOCKER_PASSWORD flights-history-service 1)" .
+    - cd service docker build -t test .
 
 #run tests
 test:
@@ -43,15 +44,15 @@ test:
     - cd automation && mvn clean test -DargLine="-Dspring.profiles.active=ci" -Dcucumber.options="--tags @sanity"
     - cd automation && mvn clean test -DargLine="-Dspring.profiles.active=ci" -Dcucumber.options="--tags @smoke"
 
-deployment:
-  staging:
-    branch: staging
-    commands:
-      - docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USER" -p "$DOCKER_PASSWORD"
-      - docker push "statravel/flights-history-service:$(/bin/bash shared-workspace/docker-image-tag.sh $DOCKER_USER $DOCKER_PASSWORD flights-history-service 1)"
+# deployment:
+#   staging:
+#     branch: staging
+#     commands:
+#       - docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USER" -p "$DOCKER_PASSWORD"
+#       - docker push "statravel/flights-history-service:$(/bin/bash shared-workspace/docker-image-tag.sh $DOCKER_USER $DOCKER_PASSWORD flights-history-service 1)"
 
-deployment:
-  staging:
-    branch: master
-    commands:
-      - curl -H "Authorization:Token $WORKFLOW_CONTROLLER_API_TOKEN" -H "Content-Type:application/json" -X POST $WORKFLOW_CONTROLLER_API_DEPLOY_APP_URL -d '{"image":"statravel/flights-history-service:'$(/bin/bash ./docker-image-tag.sh $DOCKER_USER $DOCKER_PASSWORD latest)'"}'
+# deployment:
+#   staging:
+#     branch: master
+#     commands:
+#       - curl -H "Authorization:Token $WORKFLOW_CONTROLLER_API_TOKEN" -H "Content-Type:application/json" -X POST $WORKFLOW_CONTROLLER_API_DEPLOY_APP_URL -d '{"image":"statravel/flights-history-service:'$(/bin/bash ./docker-image-tag.sh $DOCKER_USER $DOCKER_PASSWORD latest)'"}'
